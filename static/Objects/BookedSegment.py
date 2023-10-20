@@ -2,8 +2,9 @@ from enum import Enum
 from pydantic import BaseModel
 import re
 
-flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{4}$"
 
+flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{4}$"
+airlineCode_PATTERN=r"^[A-Z]{2}$"
 
 class BookingClass(Enum):
     ECONOMY = 'ECONOMY'
@@ -34,7 +35,11 @@ class BookedSegment(BaseModel):
             raise ValueError("Flight Number incorrect")
         self.flightNumber = flightNumber
         self.flightDate = flightDate
-        self.airlineCode = airlineCode
+        if re.match(airlineCode_PATTERN, airlineCode):
+            self.airlineCode = airlineCode
+        else:
+            raise ValueError("AirLine Code incorrect")
+
         self.departureDate = departureDate
         self.arrivalDate = arrivalDate
         self.bookingClass = bookingClass
