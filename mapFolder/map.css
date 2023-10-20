@@ -1,0 +1,125 @@
+:root {
+    --europe_stroke: black;
+    --europe_width: 1;
+    --europe_fill: white;
+
+    --northAmerica_stroke: black;
+    --northAmerica_width: 1;
+    --northAmerica_fill: rgb(255, 255, 255);
+
+    --southAmerica_stroke: black;
+    --southAmerica_width: 1;
+    --southAmerica_fill: white;
+
+    --asia_stroke: black;
+    --asia_width: 1;
+    --asia_fill: white;
+
+    --africa_stroke: black;
+    --africa_width: 1;
+    --africa_fill: white;
+
+    --oceania_stroke: black;
+    --oceania_width: 1;
+    --oceania_fill: white;
+}
+body {
+    background-color: #f4f4f4;
+}
+.mapdiv {
+    position: relative;
+    top: -550px;
+    margin-bottom: -1050px;
+    left: -500px;
+    margin-right: -1000px; 
+    transform: scale(0.58);
+    margin-top: 400px;
+    margin-left: 150px;
+}
+
+.below_map {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.filters{z-index: 2;}
+
+#harta {
+    width: 1200px;
+    height: 600px;
+    /* border: 5px solid black; */
+    position: relative;
+    top: 20px;
+    left: -100px;
+    z-index: 1;
+}
+.mapdiv svg {
+    width: 100%;
+    height: 100%;
+}
+.mapdiv path {
+    fill: white;
+    stroke: black;
+    stroke-width: 1;
+    transition: fill 0.3s ease, stroke 0.3s ease;
+}
+
+svg .europe,
+svg .northAmerica,
+svg .africa,
+svg .southAmerica,
+svg .oceania,
+svg .asia {
+    transition: fill 0.1s ease, stroke 0.005s ease;
+}
+.mapdiv path {
+    fill: var(--europe_fill);
+    transition: fill 0.3s ease;
+}
+svg .europe {
+    stroke: var(--europe_stroke);
+    stroke-width: var(--europe_width);
+    fill: var(--europe_fill);
+}
+svg .northAmerica {
+    stroke: var(--northAmerica_stroke);
+    stroke-width: var(--northAmerica_width);
+    fill: var(--northAmerica_fill);
+}
+svg .africa {
+    stroke: var(--africa_stroke);
+    stroke-width: var(--africa_width);
+    fill: var(--africa_fill);
+}
+svg .southAmerica {
+    stroke: var(--southAmerica_stroke);
+    stroke-width: var(--southAmerica_width);
+    fill: var(--southAmerica_fill);
+}
+svg .oceania {
+    stroke: var(--oceania_stroke);
+    stroke-width: var(--oceania_width);
+    fill: var(--oceania_fill);
+}
+svg .asia {
+    stroke: var(--asia_stroke);
+    stroke-width: var(--asia_width);
+    fill: var(--asia_fill);
+}
+
+/*----------------------POPUPS----------------------*/
+
+.popup {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
