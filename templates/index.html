@@ -8,50 +8,17 @@
 <div class="all_container">
     <div class="price-container">
         <h2>Recent Flights History</h2>
+       {% for flight in flights%}
         <div class="credit-row">
             <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
+                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">{{flight.origin}} &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp {{flight.destination}}</p>
                 <p></p>
-                <ul>
-                    <li>Distance 600 km</li>
-                </ul>
-            </div>
-            <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
-                <p></p>
-                <ul>
-                    <li>5000 km</li>
-                </ul>
-            </div>
-            <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
-                <p></p>
-                <ul>
-                    <li>5000 km</li>
-                </ul>
-            </div>
-            <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
-                <p></p>
-                <ul>
-                    <li>5000 km</li>
-                </ul>
-            </div>
-            <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
-                <p></p>
-                <ul>
-                    <li>5000 km</li>
-                </ul>
-            </div>
-            <div class="credit-col">
-                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">TIA &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp AMS</p>
-                <p></p>
-                <ul>
-                    <li>5000 km</li>
-                </ul>
+
+                    <p> {{flight.distance}}</p>
+
             </div>
         </div>
+    {%endfor%}
     </div>
 </div>
 
