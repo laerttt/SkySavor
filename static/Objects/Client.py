@@ -7,9 +7,7 @@ class Traveller(BaseModel):
     salutation: str
     gender: str
     passengerType: str
-    document: dict
     frequentFlyerNumber: str = None
-    contact: dict
     linkedUserAccount: str
     def __init__(self, firstName, lastName, middleName=None, salutation=None,
                  gender=None, passengerType=None, document=None,
@@ -20,12 +18,8 @@ class Traveller(BaseModel):
         self._salutation = salutation
         self._gender = gender
         self._passengerType = passengerType
-        self._document = document
         self._frequentFlyerNumber = frequentFlyerNumber
-        self._contact = contact
         self._linkedUserAccount = linkedUserAccount
-
-
 
     @property
     def firstName(self):

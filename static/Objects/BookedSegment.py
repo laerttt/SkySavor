@@ -1,6 +1,7 @@
 from enum import Enum
 from pydantic import BaseModel
 import re
+from datetime import datetime
 
 
 flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{4}$"
@@ -22,7 +23,7 @@ class BookedSegment(BaseModel):
     flightDate: str  # datetime
     airlineCode: str
     departureDate: str  # na duhet datetime
-    arrivalDate: str  # datetime
+    arrivalDate: datetime  # datetime
     bookingClass: BookingClass
     price: float
     taxPercentage: float
@@ -39,9 +40,9 @@ class BookedSegment(BaseModel):
             self.airlineCode = airlineCode
         else:
             raise ValueError("AirLine Code incorrect")
-
         self.departureDate = departureDate
         self.arrivalDate = arrivalDate
         self.bookingClass = bookingClass
         self.price = price
         self.taxPercentage = taxPercentage
+
