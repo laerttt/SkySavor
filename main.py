@@ -11,7 +11,6 @@ def landingPage():
 
 
     flight_data = [
-
         Flight("LAX", "JFK", "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
                       500.0, 12.0, 300),
         Flight("SFO", "ORD", "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
@@ -30,7 +29,6 @@ def landingPage():
         linkedUserAccount="user123",
         flights=flight_data
     )
-
     return render_template("index.html",flights=traveller.flights)
 
 
