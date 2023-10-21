@@ -43,7 +43,7 @@ class Flight():
     bookingClass: BookingClass
     price: float
     taxPercentage: float
-    token=1
+
     def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage, distance):
         self.distance = int(distance)
         self.origin = origin

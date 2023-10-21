@@ -7,6 +7,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def landingPage():
+
+   
+
     flight_data = [
         Flight("JFK", "LAX", "AA123", "2023-10-25", "AA", "2023-10-25 08:00", "2023-10-25 10:30", "ECONOMY",
                       300.0, 10.0, 200),
@@ -28,7 +31,9 @@ def landingPage():
         linkedUserAccount="user123",
         flights=flight_data
     )
-    return render_template("base.html",flights=traveller.flights)
+    return render_template("index.html",flights=traveller.flights)
+
+
 @app.route("/Shop")
 def shopPage():
     return render_template(".html")

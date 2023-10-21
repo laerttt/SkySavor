@@ -1,3 +1,5 @@
+from pydantic import BaseModel
+
 class Traveller():
     flights:list
     tokens:int
