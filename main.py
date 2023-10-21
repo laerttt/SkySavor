@@ -11,8 +11,6 @@ def landingPage():
    
 
     flight_data = [
-        Flight("JFK", "LAX", "AA123", "2023-10-25", "AA", "2023-10-25 08:00", "2023-10-25 10:30", "ECONOMY",
-                      300.0, 10.0, 200),
         Flight("LAX", "JFK", "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
                       500.0, 12.0, 300),
         Flight("SFO", "ORD", "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
@@ -36,7 +34,7 @@ def landingPage():
 
 @app.route("/Shop")
 def shopPage():
-    return render_template(".html")
+    return render_template("shop.html")
 
 FLASK_ENV="development"
 FLASK_APP="main.py"
