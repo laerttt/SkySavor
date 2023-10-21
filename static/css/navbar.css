@@ -1,41 +1,94 @@
-/*------------------------------------------------------------------------------------------------------- NORMAL NAVBAR */
-.navbar_normal{
-    background-color: #f4f4f4; 
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    padding-top: 10px;
+.navbar{
+    background-color:#f4f4f4;
+    display: flex;
+    flex-direction: column;
+    margin-top: -3px;
 }
+#pfp{
+    border-radius: 50%;
+    margin: auto;
+    margin-right: 10px;
+    
+}
+.navbar_list{
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+.trophyRoad{
+    position: relative;
+    height: 45px;
+    background-color: #e5e5e5; /* 5, 22, 77 */
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.trophyRoad-bar{
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    height: 20px;
+    width: 100%;
+}
+.pg{
+    z-index: 1;
+    background-color: #05164D; /* color code i lufthanses btw */
+    border-radius: 10px;
+    margin-top: -20px;
+    height: 20px;
+    width: 50%;
 
-
-
+}
+li:first-child{
+    padding-right: 50px;
+}
+li{
+    margin: auto;
+}
+li:last-child{
+    margin-left: 20px;
+}
 .navbar_button_group{
     display: flex;
     flex-direction: row;
     margin-left: 50px;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 2px;
+    justify-content: center;
+    align-items: center;
+}
+.amogus{
+    z-index: 2;
+    margin-top: -28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.circle{
+    height: 35px;
+    width: 35px;
+    border: 1px solid grey;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* margin-left: 10px;
+    margin-right: 10px; */
 }
 
-.navbar_normal_list .ul {
-    list-style: none;
-  }
-  
-.navbar_normal_list li {
-    display: inline-block;
-    margin-right: 50px;
+.pgbar{
+    height:5px;
+    width:715%;
+    background-color: rgb(114, 114, 114);
+    position: relative;
+    top: -20px;
+    left: 35px;
 }
 
-.navbar_normal_list a{
-    text-decoration: none;
-    color: black;
-    opacity: 0.7;
-    border-bottom: 2px solid transparent;
-}
-
-.navbar_normal_list li a:hover{
-    color: purple;
-    opacity: 1;
-    border-bottom: 2px solid purple;
-    /* border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px; */
+.bar1{
+    background-color: green;
 }
