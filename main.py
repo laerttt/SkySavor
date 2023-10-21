@@ -51,7 +51,7 @@ def landingPage():
     # nextLevelPoints dictionary containing diff level points
     # levelPoints specific level points
 
-    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints)
+    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints, tokens=20, firstname=traveller.firstName, lastname=traveller.lastName, km = traveller.km)
 def findCurrLevel(obj):
     for i in range(1,LEVEL_POINTS_LENGTH):
         if obj.km > LEVEL_POINTS[i]:
