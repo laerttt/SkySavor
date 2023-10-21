@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 </head>
+
 <body>
-<div>
-{% for flight in flights%}
+      <div>
+            {% for flight in flights%}
 
-      <li>
-       {{flight.origin}}
-            {{flight.destination}}
-            {{flight.distance}}
+            <li>
+                  {{flight.origin}}
+                  {{flight.destination}}
+                  {{flight.distance}}
 
-      </li>
+            </li>
 
-{%endfor%}
+            {%endfor%}
 
 
-</div>
+      </div>
 </body>
+
 </html>
