@@ -22,7 +22,7 @@ def landingPage():
 
     flight_data = [
         Flight(France, Japan, "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
-                      500.0, 12.0, 300),
+                      500.0, 12.0, 800),
         Flight(USA, France, "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
                       "PREMIUM_ECONOMY", 400.0, 11.0, 232),
         Flight(Japan, USA, "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
@@ -44,10 +44,15 @@ def landingPage():
     currLevel = findCurrLevel(traveller)
     nextLevelPoints = LEVEL_POINTS[currLevel + 1] - traveller.km
     LevelPoints = LEVEL_POINTS[currLevel]
+    map_data={}
+    for flight in flight_data:
+        map_data[flight.origin.Name] = flight.origin.continent
+        map_data[flight.destination.Name] = flight.destination.continent
 
+    print(map_data)
     #json for map
     json=obj_to_json(traveller)
-
+    print(json)
 
     print(traveller.tokens)
 
