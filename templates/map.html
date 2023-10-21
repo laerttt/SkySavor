@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="{{ url_for('static',
+    filename = 'css/map.css') }}">    
     <title>Document</title>
 </head>
 <body>
@@ -2016,5 +2017,5 @@
  <div id="oceania-popup" class="popup">Oceania</div>
 </body>
 
-<script src="map.js"></script>
-</html>
+<script src="{{ url_for('static',
+filename = 'js/map.js') }}"></script></html>
