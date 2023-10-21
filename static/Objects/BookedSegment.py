@@ -1,9 +1,11 @@
 from enum import Enum
 from pydantic import BaseModel
 import re
+from datetime import datetime
+
 
 flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{4}$"
-
+airlineCode_PATTERN=r"^[A-Z]{2}$"
 
 class BookingClass(Enum):
     ECONOMY = 'ECONOMY'
@@ -14,9 +16,26 @@ class TicketStatus(Enum):
     ACTIVE = 'ACTIVE'
     CANCELED = 'CANCELED'
     REFUNDED = 'REFUNDED'
-class BookedSegment(BaseModel):
-    origin: str
-    destination: str
+class Continent(Enum):
+    AFRICA = "Africa"
+    ANTARCTICA = "Antarctica"
+    ASIA = "Asia"
+    EUROPE = "Europe"
+    NORTH_AMERICA = "North America"
+    OCEANIA = "Oceania"
+    SOUTH_AMERICA = "South America"
+
+class Country:
+    Continent:Continent
+    Name:str
+    def __init__(self, name, continent):
+        self.name = name
+        self.continent = continent
+class Flight(BaseModel):
+
+    origin: Country
+    destination: Country
+    distance: int
     flightNumber: str
     flightDate: str  # datetime
     airlineCode: str
@@ -25,6 +44,7 @@ class BookedSegment(BaseModel):
     bookingClass: BookingClass
     price: float
     taxPercentage: float
+    token=1
     def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage):
         self.origin = origin
         self.destination = destination
@@ -34,9 +54,13 @@ class BookedSegment(BaseModel):
             raise ValueError("Flight Number incorrect")
         self.flightNumber = flightNumber
         self.flightDate = flightDate
-        self.airlineCode = airlineCode
+        if re.match(airlineCode_PATTERN, airlineCode):
+            self.airlineCode = airlineCode
+        else:
+            raise ValueError("AirLine Code incorrect")
         self.departureDate = departureDate
         self.arrivalDate = arrivalDate
         self.bookingClass = bookingClass
         self.price = price
         self.taxPercentage = taxPercentage
+
