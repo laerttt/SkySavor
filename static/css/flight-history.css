@@ -73,11 +73,12 @@ li {
   margin: 5px 0;
 }
 
-li:hover{
-  
-}
-
 .currently span {
   color: lightgray;
   font-weight: 200;
+}
+
+.airports {
+  display: flex;
+  flex-direction: row;
 }
