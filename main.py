@@ -31,7 +31,10 @@ def landingPage():
         linkedUserAccount="user123",
         flights=flight_data
     )
-    return render_template("index.html",flights=traveller.flights)
+    # currLevel eshte niveli ne te cilin ndodhten travelleri
+    #nextLevelPoints eshte sa pik i duhet travellerit me kalu nivel
+    #levelPoints esht sa pik ka niveli 
+    return render_template("index.html",flights=traveller.flights, currLevel=4, nextLevelPoints=2, levelPoints=3)
 
 
 @app.route("/Shop")
