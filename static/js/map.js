@@ -122,6 +122,34 @@ for (let i = 0; i < paths.length; i++) {
       });
 
 /*----------------------POPUPS----------------------*/
+
+/*Visited places color*/ 
+// Define your countries object
+let countries = {
+  "USA": "NorthAmerica",
+  "France": "Europe",
+  "China": "Asia",
+  "Brazil": "SouthAmerica"
+};
+
+// Function to set initial fill colors for countries on the SVG map
+function setInitialFillColors() {
+  for (let country in countries) {
+      let continent = countries[country];
+      let svgElement = document.getElementById(country);
+      if (svgElement) {
+          svgElement.style.fill = "lightblue";
+      }
+  }
+}
+
+// Call the function when the page finishes loading
+window.onload = function() {
+  setInitialFillColors();
+  // You can add more code here if needed
+};
+
+/*Kilometers popup*/
 function popupkm(event) {
   const path = event.target;
   const continent = path.getAttribute("class");
@@ -159,6 +187,14 @@ function popupkm(event) {
       "africa": 54
       // Add other continents as needed
   };
+  for (let country in countries) {
+    let continent = countries[country];
+  
+    let svgElement = document.getElementById(country);
+    if (svgElement) {
+        svgElement.style.fill = "lightblue";
+    }
+  }
 
   let continentCount = continentCounts[continent]; // Get the count for the specific continent
   const maxCapacity = continentMaxCapacity[continent]; // Corrected continent names
@@ -166,7 +202,7 @@ function popupkm(event) {
   popupContent.textContent = `${continentCount}/${maxCapacity}`;
 }
 
-
+/*Main Popup */
 function getPathClassName(event) {
   const path = event.target;
   const continent = path.getAttribute("class");
@@ -195,6 +231,7 @@ function getPathClassName(event) {
 
       popupkm(event);
   }
+  
 }
 
 
@@ -226,11 +263,3 @@ continentPopups.forEach(popup => {
 
 /*----------------------------------------------POPUP COUNTRIES JS JINIJA DICTIONARY----------- */
 
-for (let country in countries) {
-  let continent = countries[country];
-
-  let svgElement = document.getElementById(country);
-  if (svgElement) {
-      svgElement.style.fill = "lightblue";
-  }
-}
