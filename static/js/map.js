@@ -178,3 +178,43 @@ continentPopups.forEach(popup => {
     event.stopPropagation();
   });
 });
+
+/*----------------------------------------------POPUP COUNTRIES JS JINIJA DICTIONARY----------- */
+
+let countries = {
+  "USA": "North America",
+  "France": "Europe",
+  "China": "Asia",
+  "Brazil": "South America",
+};
+
+let europeCount = 0;
+let asiaCount = 0;
+let northAmericaCount = 0;
+let southAmericaCount = 0;
+let oceaniaCount = 0;
+let afrikaCount = 0;
+
+for (let country in countries) {
+  let continent = countries[country];
+
+  switch (continent) {
+      case "Europe":
+          europeCount++;
+          break;
+      case "Asia":
+          asiaCount++;
+          break;
+      case "North America":
+          northAmericaCount++;
+          break;
+      case "South America":
+          southAmericaCount++;
+          break;
+  }
+
+  let svgElement = document.getElementById(country);
+  if (svgElement) {
+      svgElement.style.fill = "lightblue";
+  }
+}
