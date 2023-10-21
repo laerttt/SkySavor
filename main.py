@@ -44,10 +44,15 @@ def landingPage():
     currLevel = findCurrLevel(traveller)
     nextLevelPoints = LEVEL_POINTS[currLevel + 1] - traveller.km
     LevelPoints = LEVEL_POINTS[currLevel]
+    map_data={}
+    for flight in flight_data:
+        map_data[flight.origin.Name] = flight.origin.continent
+        map_data[flight.destination.Name] = flight.destination.continent
 
+    print(map_data)
     #json for map
     json=obj_to_json(traveller)
-
+    print(json)
 
     print(traveller.tokens)
 
