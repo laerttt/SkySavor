@@ -1,78 +1,83 @@
 
 .price-container {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 400px;
-    position: absolute; 
-    top: 200px; 
-    left: 10px; 
-    border: none;
-  }
+  background-color: #05164D;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px grey;
+  width: 80%;
+  max-width: 400px;
+  position: absolute; 
+  top: 200px; 
+  left: 10px; 
+  border: none;
+}
 
-  .price-container h2 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-    color: #18007a;
-  }
-  
-  
-  .credit-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-  }
-  
- 
-  .credit-col {
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-    width: 80%; 
-    max-width: 400px;
-    box-shadow: 0 0 5px 5px rgb(229, 229, 251);
-  }
-  
-  
-  h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  
-  .currently {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0;
-  }
-  
- 
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
+.price-container h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: white;
+}
 
-  li {
-    color: #555;
-    margin: 5px 0;
-  }
+
+.credit-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+}
+
+
+.credit-col {
+  padding: 10px;
+  background-color: #fbfbfb;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px 0;
+  width: 80%; 
+  max-width: 400px;
+  transition: border-radius 150ms, width 150ms;
+}
+
+.credit-col:hover{
+  border-radius: 10px;
+  width: 85%;
+}
+
+
+
+
+h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+
+.currently {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+
+li {
+  color: #555;
+  margin: 5px 0;
+}
+
+li:hover{
   
-  li:hover{
-    
-  }
- 
-  .currently span {
-    color: lightgray;
-    font-weight: 200;
-  }
-  
+}
+
+.currently span {
+  color: lightgray;
+  font-weight: 200;
+}
