@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route("/")
 def landingPage():
     return render_template("base.html")
+
 @app.route("/Shop")
 def shopPage():
     return render_template(".html")
