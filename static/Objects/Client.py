@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class Traveller(BaseModel):
+class Traveller():
     flights:list
     tokens:int
     visitedCountries: list

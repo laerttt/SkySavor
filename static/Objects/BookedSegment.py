@@ -31,7 +31,7 @@ class Country:
     def __init__(self, name, continent):
         self.name = name
         self.continent = continent
-class Flight(BaseModel):
+class Flight():
 
     origin: Country
     destination: Country
@@ -44,7 +44,6 @@ class Flight(BaseModel):
     bookingClass: BookingClass
     price: float
     taxPercentage: float
-    token=1
     def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage):
         self.origin = origin
         self.destination = destination
