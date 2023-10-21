@@ -1,0 +1,94 @@
+.all_container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+}
+
+.price-container {
+    width: 100%;
+    min-height: 100vh;
+    background: #cfc5fb;
+}
+
+.price-container h2 {
+    color: #fff;
+    font-size: 32px;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.credit-row {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 25px;
+}
+.credit-col {
+    background: #1b1460;
+    padding: 10% 15%;
+    border-radius: 10px;
+    color: #fff;
+    text-align: center;
+}
+
+.credit-col h3 {
+    font-size: 44px;
+    margin: 20px 0 40px;
+    font-weight: 500;
+}
+
+.credit-col p {
+    font-size: 22px;
+}
+
+.credit-col h3 span {
+    font-size: 16px;
+}
+
+.credit-col img{
+    border-radius: 100px; 
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+
+.credit-col ul {
+    text-align: left;
+    margin: 20px 0;
+    color: #ddd;
+    list-style: none;
+}
+
+.credit-col ul li {
+    margin: 15px 0;
+}
+
+.credit-col ul li::before {
+    content: '\2022';
+    color: #e33058;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.credit-col button {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    border: 1px solid #e33058;
+    border-radius: 6px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.credit-col button:hover {
+    background: #e33058;
+}
