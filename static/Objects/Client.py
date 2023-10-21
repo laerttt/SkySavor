@@ -27,6 +27,9 @@ class Traveller(BaseModel):
         self._linkedUserAccount = linkedUserAccount
         for flight in self._flights:
             self._km=self._km+flight.distance
+            self._visitedCountries.append(flight.origin)
+            self._visitedCountries.append(flight.distance)
+
         self.flights=flights
 
     @property

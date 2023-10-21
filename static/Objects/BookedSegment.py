@@ -16,10 +16,25 @@ class TicketStatus(Enum):
     ACTIVE = 'ACTIVE'
     CANCELED = 'CANCELED'
     REFUNDED = 'REFUNDED'
+class Continent(Enum):
+    AFRICA = "Africa"
+    ANTARCTICA = "Antarctica"
+    ASIA = "Asia"
+    EUROPE = "Europe"
+    NORTH_AMERICA = "North America"
+    OCEANIA = "Oceania"
+    SOUTH_AMERICA = "South America"
+
+class Country:
+    Continent:Continent
+    Name:str
+    def __init__(self, name, continent):
+        self.name = name
+        self.continent = continent
 class Flight(BaseModel):
 
-    origin: str
-    destination: str
+    origin: Country
+    destination: Country
     distance: int
     flightNumber: str
     flightDate: str  # datetime
@@ -29,6 +44,7 @@ class Flight(BaseModel):
     bookingClass: BookingClass
     price: float
     taxPercentage: float
+    token=1
     def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage):
         self.origin = origin
         self.destination = destination
