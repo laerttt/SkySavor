@@ -28,7 +28,7 @@ class Country:
     Continent:Continent
     Name:str
     def __init__(self, name, continent):
-        self.name = name
+        self.Name = name
         self.continent = continent
 class Flight():
 
@@ -65,4 +65,9 @@ class Flight():
         self.bookingClass = bookingClass
         self.price = price
         self.taxPercentage = taxPercentage
+
+    @property
+    def getDistance(self):
+        return self.distance
+
 
