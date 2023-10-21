@@ -28,6 +28,7 @@ def landingPage():
         Flight(Japan, USA, "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
                       350.0, 10.5, 123)
     ]
+
     traveller = Traveller(
         firstName="John",
         lastName="Doe",

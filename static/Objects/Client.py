@@ -189,14 +189,4 @@ class Traveller():
         else:
             raise ValueError("km must be an integer")
 
-    @property
-    def Amount(self):
-        return self._amount
-
-    @Amount.setter
-    def Amount(self, amount):
-        if isinstance(amount, (int, float)) and amount >= 0:
-            self._amount = amount
-        else:
-            raise ValueError("Amount must be a non-negative number")
 

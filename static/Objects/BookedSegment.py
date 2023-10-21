@@ -63,13 +63,14 @@ class Flight():
     destination: Country
     distance: int
     flightNumber: str
-    flightDate: str  # datetime
+    flightDate: str
     airlineCode: str
-    departureDate: str  # na duhet datetime
-    arrivalDate: str  # datetime
+    departureDate: str
+    arrivalDate: str
     bookingClass: BookingClass
     price: float
     taxPercentage: float
+    token :int
 
     def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage, distance):
         self.distance = int(distance)
@@ -92,9 +93,26 @@ class Flight():
         self.bookingClass = bookingClass
         self.price = price
         self.taxPercentage = taxPercentage
-
+        if self.bookingClass=="ECONOMY":
+            self.token=1
+        elif self.bookingClass=="PREMIUM_ECONOMY":
+            self.token=2
+        elif self.bookingClass == "BUSINESS":
+            self.token = 3
+        elif self.bookingClass == "FIRST":
+            self.token = 4
     @property
     def getDistance(self):
         return self.distance
 
+    @property
+    def token(self):
+        return self._token
+
+    @token.setter
+    def token(self, new_token):
+        if isinstance(new_token, int):
+            self._token = new_token
+        else:
+            raise ValueError("Token must be an integer")
 
