@@ -27,9 +27,36 @@ class Continent(Enum):
 class Country:
     Continent:Continent
     Name:str
-    def __init__(self, name, continent):
+    Aeroport:str
+
+    @property
+    def Continent(self):
+        return self._continent
+
+    @Continent.setter
+    def Continent(self, continent):
+        self._continent = continent
+
+    @property
+    def Name(self):
+        return self._name
+
+    @Name.setter
+    def Name(self, name):
+        self._name = name
+
+    @property
+    def Aeroport(self):
+        return self._aeroport
+
+    @Aeroport.setter
+    def Aeroport(self, aeroport):
+        self._aeroport = aeroport
+    def __init__(self, name, continent,Aeroport):
         self.Name = name
         self.continent = continent
+        self.Aeroport=Aeroport
+
 class Flight():
 
     origin: Country
