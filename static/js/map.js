@@ -122,6 +122,50 @@ for (let i = 0; i < paths.length; i++) {
       });
 
 /*----------------------POPUPS----------------------*/
+function popupkm(event) {
+  const path = event.target;
+  const continent = path.getAttribute("class");
+  const popup = document.getElementById(`${continent}-popup`);
+  const popupContent = popup.querySelector(`.${continent}-fraction`);
+
+  let countries = {
+      "USA": "northAmerica", // Corrected continent names
+      "France": "europe",
+      "China": "asia",
+      "Brazil": "southAmerica",
+      "Albania": "europe"
+  };
+
+  let continentCounts = {
+      "europe": 0,
+      "asia": 0,
+      "northAmerica": 0,
+      "southAmerica": 0,
+      "oceania": 0,
+      "africa": 0
+    };
+
+  for (let country in countries) {
+      let continentName = countries[country];
+      continentCounts[continentName]++;
+  }
+
+  const continentMaxCapacity = {
+      "europe": 44,
+      "asia": 49,
+      "northAmerica": 23,
+      "southAmerica": 12,
+      "oceania": 14,
+      "africa": 54
+      // Add other continents as needed
+  };
+
+  let continentCount = continentCounts[continent]; // Get the count for the specific continent
+  const maxCapacity = continentMaxCapacity[continent]; // Corrected continent names
+
+  popupContent.textContent = `${continentCount}/${maxCapacity}`;
+}
+
 
 function getPathClassName(event) {
   const path = event.target;
@@ -129,39 +173,36 @@ function getPathClassName(event) {
   const popup = document.getElementById(`${continent}-popup`);
 
   if (path.tagName === "path") {
-    // Show the appropriate popup
-    popup.style.display = "block";
+      popup.style.display = "block";
 
-    // Position the popup relative to the mouse click
-    const popupWidth = popup.offsetWidth;
-    const popupHeight = popup.offsetHeight;
-    const mouseX = event.pageX;
-    const mouseY = event.pageY;
+      const popupWidth = popup.offsetWidth;
+      const popupHeight = popup.offsetHeight;
+      const mouseX = event.pageX;
+      const mouseY = event.pageY;
 
-    const popupX = mouseX - popupWidth / 2;
-    const popupY = mouseY - popupHeight;
+      const popupX = mouseX - popupWidth / 2;
+      const popupY = mouseY - popupHeight;
 
-    // Set the position for the popup
-    popup.style.left = popupX + "px";
-    popup.style.top = popupY + "px";
+      popup.style.left = popupX + "px";
+      popup.style.top = popupY + "px";
 
-    // Hide other popups
-    const allPopups = document.querySelectorAll(".popup");
-    allPopups.forEach(p => {
-      if (p !== popup) {
-        p.style.display = "none";
-      }
-    });
+      const allPopups = document.querySelectorAll(".popup");
+      allPopups.forEach(p => {
+          if (p !== popup) {
+              p.style.display = "none";
+          }
+      });
+
+      popupkm(event);
   }
 }
 
-// Attach click event listener to all SVG paths
+
 const svgPath = document.querySelectorAll("svg path");
 svgPaths.forEach(path => {
   path.addEventListener("click", getPathClassName);
 });
 
-// Hide all popups if clicked outside any continent
 document.addEventListener("click", function(event) {
   if (!event.target.closest("path")) {
     const allPopups = document.querySelectorAll(".popup");
@@ -171,7 +212,6 @@ document.addEventListener("click", function(event) {
   }
 });
 
-// Prevent click events from propagating to the body element
 const continentPopups = document.querySelectorAll(".popup");
 continentPopups.forEach(popup => {
   popup.addEventListener("click", function(event) {
@@ -179,39 +219,15 @@ continentPopups.forEach(popup => {
   });
 });
 
+  
+
+
+
+
 /*----------------------------------------------POPUP COUNTRIES JS JINIJA DICTIONARY----------- */
-
-let countries = {
-  "USA": "North America",
-  "France": "Europe",
-  "China": "Asia",
-  "Brazil": "South America",
-};
-
-let europeCount = 0;
-let asiaCount = 0;
-let northAmericaCount = 0;
-let southAmericaCount = 0;
-let oceaniaCount = 0;
-let afrikaCount = 0;
 
 for (let country in countries) {
   let continent = countries[country];
-
-  switch (continent) {
-      case "Europe":
-          europeCount++;
-          break;
-      case "Asia":
-          asiaCount++;
-          break;
-      case "North America":
-          northAmericaCount++;
-          break;
-      case "South America":
-          southAmericaCount++;
-          break;
-  }
 
   let svgElement = document.getElementById(country);
   if (svgElement) {
