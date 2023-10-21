@@ -16,9 +16,9 @@ LEVEL_POINTS={
 LEVEL_POINTS_LENGTH=8
 @app.route("/")
 def landingPage():
-    France = Country("Europe", "France", "Charles de Gaulle Airport")
-    Japan = Country("Asia", "Japan", "Narita International Airport")
-    USA = Country("North America", "USA", "JFK International Airport")
+    France = Country("France", "Europe", "CGA")
+    Japan = Country("Japan", "Asia", "MIA")
+    USA = Country("USA", "North America", "JFK")
 
     flight_data = [
         Flight(France, Japan, "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
@@ -48,11 +48,8 @@ def landingPage():
     #json for map
     json=obj_to_json(traveller)
 
-    print(json)
-    print(currLevel)
-    print(nextLevelPoints)
-    print(LevelPoints)
 
+    print(traveller.tokens)
 
     # currLevel (self explanatory)
     # nextLevelPoints dictionary containing diff level points

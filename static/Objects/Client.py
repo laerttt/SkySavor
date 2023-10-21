@@ -1,8 +1,6 @@
-from pydantic import BaseModel
 
 class Traveller():
     flights:list
-    tokens:int
     visitedCountries: list
     km: int
     firstName: str
@@ -14,6 +12,7 @@ class Traveller():
     frequentFlyerNumber: str = None
     linkedUserAccount: str
     currLevel:int
+    tokens: int
 
    #tokens and visited not added to innit for later to do
     def __init__(self, firstName, lastName, middleName=None, salutation=None,
@@ -30,6 +29,7 @@ class Traveller():
         self._flights = flights
         self._km=0
         self._visitedCountries = []
+        self._tokens = 0
         for flight in self._flights:
                 self._km=self._km+flight.distance
                 if flight.bookingClass == "ECONOMY":
@@ -188,5 +188,16 @@ class Traveller():
             self._km = kilometers
         else:
             raise ValueError("km must be an integer")
+
+    @property
+    def tokens(self):
+        return self._tokens
+
+    @tokens.setter
+    def tokens(self, new_tokens):
+        if isinstance(new_tokens, int):
+            self._tokens = new_tokens
+        else:
+            raise ValueError("Token must be an integer")
 
 
