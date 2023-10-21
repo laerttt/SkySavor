@@ -16,14 +16,19 @@ LEVEL_POINTS={
 LEVEL_POINTS_LENGTH=8
 @app.route("/")
 def landingPage():
+    France = Country("France", "Europe", "CGA")
+    Japan = Country("Japan", "Asia", "MIA")
+    USA = Country("USA", "North America", "JFK")
+
     flight_data = [
-        Flight("LAX", "JFK", "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
+        Flight(France, Japan, "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
                       500.0, 12.0, 300),
-        Flight("SFO", "ORD", "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
+        Flight(USA, France, "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
                       "PREMIUM_ECONOMY", 400.0, 11.0, 232),
-        Flight("ORD", "SFO", "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
+        Flight(Japan, USA, "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
                       350.0, 10.5, 123)
     ]
+
     traveller = Traveller(
         firstName="John",
         lastName="Doe",
@@ -35,23 +40,22 @@ def landingPage():
         linkedUserAccount="user123",
         flights= flight_data
     )
+    # variables for roadmap trophies
     currLevel = findCurrLevel(traveller)
     nextLevelPoints = LEVEL_POINTS[currLevel + 1] - traveller.km
     LevelPoints = LEVEL_POINTS[currLevel]
+
+    #json for map
     json=obj_to_json(traveller)
 
-    print(json)
-    print(currLevel)
-    print(nextLevelPoints)
-    print(LevelPoints)
 
+    print(traveller.tokens)
 
-    Albania=Country("Albania","Europe")
     # currLevel (self explanatory)
     # nextLevelPoints dictionary containing diff level points
     # levelPoints specific level points
 
-    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints)
+    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints, tokens=20, firstname=traveller.firstName, lastname=traveller.lastName, km=traveller.km)
 def findCurrLevel(obj):
     for i in range(1,LEVEL_POINTS_LENGTH):
         if obj.km > LEVEL_POINTS[i]:
