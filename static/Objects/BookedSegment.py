@@ -1,10 +1,9 @@
 from enum import Enum
-from pydantic import BaseModel
 import re
 from datetime import datetime
 
 
-flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{4}$"
+flightNumber_PATTERN=r"^[A-Z]{2}[0-9]{3}$"
 airlineCode_PATTERN=r"^[A-Z]{2}$"
 
 class BookingClass(Enum):
@@ -44,10 +43,14 @@ class Flight():
     bookingClass: BookingClass
     price: float
     taxPercentage: float
-    def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage):
+
+    def __init__(self, origin, destination, flightNumber, flightDate, airlineCode, departureDate, arrivalDate, bookingClass, price, taxPercentage, distance):
+        self.distance = int(distance)
         self.origin = origin
         self.destination = destination
+        print(flightNumber)
         if re.match(flightNumber_PATTERN, flightNumber):
+            
             self.flightNumber = flightNumber
         else:
             raise ValueError("Flight Number incorrect")

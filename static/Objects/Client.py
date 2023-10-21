@@ -25,12 +25,16 @@ class Traveller():
         self._passengerType = passengerType
         self._frequentFlyerNumber = frequentFlyerNumber
         self._linkedUserAccount = linkedUserAccount
-        for flight in self._flights:
-            self._km=self._km+flight.distance
-            self._visitedCountries.append(flight.origin)
-            self._visitedCountries.append(flight.distance)
+        self._flights = flights
+        self._km=0
+        self._visitedCountries = []
 
-        self.flights=flights
+        for flight in self._flights:
+                self._km=self._km+flight.distance
+                self._visitedCountries.append(flight.origin)
+                self._visitedCountries.append(flight.distance)
+
+        
 
     @property
     def firstName(self):
@@ -144,6 +148,6 @@ class Traveller():
             raise ValueError("Linked user account must be a string")
     @property
     def flights(self):
-        return self.flights
+        return self._flights
 
 
