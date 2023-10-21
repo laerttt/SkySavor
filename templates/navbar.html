@@ -24,10 +24,30 @@ filename = 'css/navbar.css') }}">
   </div>
 
   <div class="trophyRoad-bar"></div>
-  <div class="pg"></div>
+  <div class="pg" style="width:50%;"></div>
+  {% if ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 1 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 2 %}
+  <div class="pg" style="width:55%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 2 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 3 %}
+  <div class="pg" style="width:60%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 3 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 4 %}
+  <div class="pg" style="width:65%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 4 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 5 %}
+  <div class="pg" style="width:70%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 5 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 6 %}
+  <div class="pg" style="width:75%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 6 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 7 %}
+  <div class="pg" style="width:80%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 7 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 8 %}
+  <div class="pg" style="width:85%;"></div>
+  {% elif  ((levelPoints-nextLevelPoints)/levelPoints)*10 >= 8 and ((levelPoints-nextLevelPoints)/levelPoints)*10 < 9 %}
+  <div class="pg" style="width:90%;"></div>
+  {% else %}
+  <div class="pg" style="width:95%;"></div>
+  {% endif %}
   <div class="amogus">
-      {% for i in range(3)%}
-        <div class="circle">{{i}}</div>
-      {% endfor %}
+        <div class="circle">{{currLevel-1}}</div>
+        <div class="circle">{{currLevel}}</div>
+        <div class="circle">{{currLevel+1}}</div>
+
   </div>
 </div>
