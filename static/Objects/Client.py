@@ -14,6 +14,7 @@ class Traveller():
     frequentFlyerNumber: str = None
     linkedUserAccount: str
     currLevel:int
+
    #tokens and visited not added to innit for later to do
     def __init__(self, firstName, lastName, middleName=None, salutation=None,
                  gender=None, passengerType=None,
@@ -31,13 +32,22 @@ class Traveller():
         self._visitedCountries = []
         for flight in self._flights:
                 self._km=self._km+flight.distance
-                if flight.origin in self._visitedCountries:
-                    None
-                else: self._visitedCountries.append(flight.origin)
+                if flight.bookingClass == "ECONOMY":
+                    self._tokens= self._tokens+1
+                elif flight.bookingClass == "PREMIUM_ECONOMY":
+                    self._tokens= self._tokens+2
+                elif flight.bookingClass == "BUSINESS":
+                    self._tokens= self._tokens+3
+                elif flight.bookingClass == "FIRST":
+                    self._tokens= self._tokens+4
 
-                if flight.destination in self._visitedCountries:
+                if flight.origin.Name in self._visitedCountries:
                     None
-                else:  self._visitedCountries.append(flight.destination)
+                else: self._visitedCountries.append(flight.origin.Name)
+
+                if flight.destination.Name in self._visitedCountries:
+                    None
+                else:  self._visitedCountries.append(flight.destination.Name)
 
         
 

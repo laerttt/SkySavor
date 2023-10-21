@@ -11,6 +11,7 @@
        {% for flight in flights%}
         <div class="credit-row">
             <div class="credit-col">
+<<<<<<< HEAD
                 <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">{{flight.origin}} &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp {{flight.destination}}</p>
                 <div class="airports">
                 <p style="color: rgb(89, 89, 89); font-weight: 300; margin-left: 60px;"> TIA </p>
@@ -23,6 +24,13 @@
                     <p> {{flight.token}}</p>
             </div>
                 
+=======
+                <p class="currently" style="color: rgb(0, 0, 103); font-weight: 400;">{{flight.origin.Name}} &nbsp &nbsp <span style="color: lightgray; font-weight: 200;">----------------</span> &nbsp &nbsp {{flight.destination.Name}}</p>
+                <p></p>
+
+                    <p> {{flight.distance}}</p>
+
+>>>>>>> 4882e6774c11f68900a7f99f5a920ac34618a9f8
             </div>
         </div>
     {%endfor%}
