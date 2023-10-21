@@ -4,7 +4,7 @@ class Traveller():
     flights:list
     tokens:int
     visitedCountries: list
-    Km: int
+    km: int
     firstName: str
     lastName: str
     middleName: str = None
@@ -13,6 +13,7 @@ class Traveller():
     passengerType: str
     frequentFlyerNumber: str = None
     linkedUserAccount: str
+    currLevel:int
    #tokens and visited not added to innit for later to do
     def __init__(self, firstName, lastName, middleName=None, salutation=None,
                  gender=None, passengerType=None,
@@ -28,17 +29,15 @@ class Traveller():
         self._flights = flights
         self._km=0
         self._visitedCountries = []
-
         for flight in self._flights:
                 self._km=self._km+flight.distance
                 if flight.origin in self._visitedCountries:
-                    continue
+                    None
                 else: self._visitedCountries.append(flight.origin)
 
                 if flight.destination in self._visitedCountries:
-                    continue
+                    None
                 else:  self._visitedCountries.append(flight.destination)
-
 
         
 
@@ -155,5 +154,29 @@ class Traveller():
     @property
     def flights(self):
         return self._flights
+    @property
+    def visitedCountries(self):
+        return self._visitedCountries
+
+    # Setter for visitedCountries
+    @visitedCountries.setter
+    def visitedCountries(self, countries):
+        if isinstance(countries, list):
+            self._visitedCountries = countries
+        else:
+            raise ValueError("visitedCountries must be a list")
+
+    # Getter for km
+    @property
+    def km(self):
+        return self._km
+
+    # Setter for km
+    @km.setter
+    def km(self, kilometers):
+        if isinstance(kilometers, int):
+            self._km = kilometers
+        else:
+            raise ValueError("km must be an integer")
 
 
