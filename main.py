@@ -1,10 +1,12 @@
 from flask import Flask, render_template
 
+from static.Objects.Client import Traveller
+
 app = Flask(__name__)
 
 @app.route("/")
 def landingPage():
-   return render_template("base.html")
+    return render_template("base.html")
 @app.route("/Shop")
 def shopPage():
     return render_template(".html")

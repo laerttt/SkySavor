@@ -1,6 +1,10 @@
 from pydantic import BaseModel
 
 class Traveller(BaseModel):
+    flights:list
+    tokens:int
+    visitedCountries: list
+    Km: int
     firstName: str
     lastName: str
     middleName: str = None
@@ -9,9 +13,10 @@ class Traveller(BaseModel):
     passengerType: str
     frequentFlyerNumber: str = None
     linkedUserAccount: str
+   #tokens and visited not added to innit for later to do
     def __init__(self, firstName, lastName, middleName=None, salutation=None,
-                 gender=None, passengerType=None, document=None,
-                 frequentFlyerNumber=None, contact=None, linkedUserAccount=None):
+                 gender=None, passengerType=None,
+                 frequentFlyerNumber=None , linkedUserAccount=None,flights=None):
         self._firstName = firstName
         self._lastName = lastName
         self._middleName = middleName
@@ -20,6 +25,9 @@ class Traveller(BaseModel):
         self._passengerType = passengerType
         self._frequentFlyerNumber = frequentFlyerNumber
         self._linkedUserAccount = linkedUserAccount
+        for flight in self._flights:
+            self._km=self._km+flight.distance
+        self.flights=flights
 
     @property
     def firstName(self):
@@ -131,4 +139,8 @@ class Traveller(BaseModel):
             self._linkedUserAccount = value
         else:
             raise ValueError("Linked user account must be a string")
+    @property
+    def flights(self):
+        return self.flights
+
 

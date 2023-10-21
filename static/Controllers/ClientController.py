@@ -10,7 +10,7 @@ traveller = {
         "frequentFlyerNumber": "FF123",
         "linkedUserAccount": "user123"
     }
-def JSON_Client(json):
-     Test=Traveller(json.firstName,json.lastName,json.middleName,json.salutation,json.gender,json.passangerType,json.frequentFlyerNumber,json.linkedUserAccount)
-     return Test
+#def JSON_Client(json):
+    # Test=Traveller(json.firstName,json.lastName,json.middleName,json.salutation,json.gender,json.passangerType,json.frequentFlyerNumber,json.linkedUserAccount)
+     #return Test
 

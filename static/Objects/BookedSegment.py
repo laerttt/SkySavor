@@ -16,14 +16,16 @@ class TicketStatus(Enum):
     ACTIVE = 'ACTIVE'
     CANCELED = 'CANCELED'
     REFUNDED = 'REFUNDED'
-class BookedSegment(BaseModel):
+class Flight(BaseModel):
+
     origin: str
     destination: str
+    distance: int
     flightNumber: str
     flightDate: str  # datetime
     airlineCode: str
     departureDate: str  # na duhet datetime
-    arrivalDate: datetime  # datetime
+    arrivalDate: str  # datetime
     bookingClass: BookingClass
     price: float
     taxPercentage: float

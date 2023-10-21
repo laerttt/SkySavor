@@ -4,6 +4,18 @@
 
 </head>
 <body>
+<div>
+{% for flight in flights%}
 
+      <li>
+       {{flight.origin}}
+            {{flight.destination}}
+            {{flight.distance}}
+      </li>
+
+{%endfor%}
+
+
+</div>
 </body>
 </html>
