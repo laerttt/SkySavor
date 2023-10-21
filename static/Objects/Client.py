@@ -31,8 +31,14 @@ class Traveller():
 
         for flight in self._flights:
                 self._km=self._km+flight.distance
-                self._visitedCountries.append(flight.origin)
-                self._visitedCountries.append(flight.distance)
+                if flight.origin in self._visitedCountries:
+                    continue
+                else: self._visitedCountries.append(flight.origin)
+
+                if flight.destination in self._visitedCountries:
+                    continue
+                else:  self._visitedCountries.append(flight.destination)
+
 
         
 

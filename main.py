@@ -1,6 +1,6 @@
 from flask import Flask, render_template
-
-from static.Objects.BookedSegment import Flight
+import json
+from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Client import Traveller
 
 app = Flask(__name__)
@@ -29,7 +29,10 @@ def landingPage():
         linkedUserAccount="user123",
         flights=flight_data
     )
-    return render_template("index.html",flights=traveller.flights)
+    Albania=Country("Albania","Europe")
+    json=obj_to_json(traveller.visitedCountries)
+    return render_template("index.html",flights=traveller.flights,json=json)
+
 
 
 @app.route("/Shop")
@@ -38,6 +41,9 @@ def shopPage():
 
 FLASK_ENV="development"
 FLASK_APP="main.py"
+def obj_to_json(obj):
+    return json.dumps(obj)
+
 
 
 if __name__ == '__main__':
