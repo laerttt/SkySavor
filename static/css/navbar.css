@@ -5,6 +5,7 @@
     margin-top: -3px;
     padding: 5px;
     border-radius: 26px;
+    background-image: linear-gradient(to top left, rgb(11, 0, 60) , #05164D);
 }
 #pfp{
     border-radius: 50%;
