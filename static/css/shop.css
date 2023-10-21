@@ -2,16 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, Helvetica, sans-serif, sans-serif;
     border-radius: 10px;
     margin-bottom: 20px;
-
 }
 
 .price-container {
     width: 100%;
     min-height: 100vh;
-    background: #cfc5fb;
+    background: #f4f4f4;
 }
 
 .price-container h2 {
@@ -29,8 +28,9 @@
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     grid-gap: 25px;
 }
+
 .credit-col {
-    background: #1b1460;
+    background: #05164D;
     padding: 10% 15%;
     border-radius: 10px;
     color: #fff;
@@ -51,15 +51,15 @@
     font-size: 16px;
 }
 
-.credit-col img{
-    border-radius: 100px; 
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
+.credit-col img {
+    border-radius: 100px;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
 }
 
 .credit-col ul {
-    text-align: left;
+    text-align: justify;
     margin: 20px 0;
     color: #ddd;
     list-style: none;
@@ -69,26 +69,48 @@
     margin: 15px 0;
 }
 
-.credit-col ul li::before {
-    content: '\2022';
-    color: #e33058;
-    font-weight: bold;
-    margin-right: 8px;
+.credit-col ul{
+    padding-left: 0px;
+}
+.shop-button {
+    position: fixed;
+    top: 50px;
+    left: 50px;
+    background-color: #05164D;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #05164D;
+    transition: background-color 200ms, border-color 200ms, color 200ms;
+}
+.shop-button:hover {
+    background-color: #fff;
+    border-color: #05164D;
+    color: #05164D;
 }
 
 .credit-col button {
     width: 100%;
     padding: 14px 0;
-    background: transparent;
-    color: #fff;
+    background: #fff;
+    color: #05164D;
     font-size: 15px;
-    border: 1px solid #e33058;
+    border: 1px solid #fff;
     border-radius: 6px;
     margin-top: 30px;
     cursor: pointer;
-    transition: background 1s;
+    transition: background 200ms, color 200ms;
 }
 
 .credit-col button:hover {
-    background: #e33058;
+    background: #05164D;
+    color: #fff;
 }
