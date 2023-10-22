@@ -1,8 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Client import Traveller
-
+import static.Controllers.kodiqr as kodiqr
 app = Flask(__name__)
 LEVEL_POINTS={
 
@@ -65,8 +65,10 @@ def findCurrLevel(obj):
         elif obj.km < LEVEL_POINTS[i]:
             return i
 
-@app.route("/Shop")
+@app.route("/Shop",methods=["GET", "POST"])
 def shopPage():
+    if request.method == "POST":
+        kodiqr.generate("https://github.com/laerttt/SkySavor", "test")
     return render_template("shop.html")
 
 FLASK_ENV="development"
