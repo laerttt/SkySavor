@@ -43,15 +43,15 @@ bundle_data = [Bundle(False, 20, "Enjoy the best quality champagne, mixed with t
                       "/static/images/boarding.jpg", "bundle1")]
 
 trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
-               Bundle(False, 0, "Bundle 2 Description", "troph 2",
+               Bundle(False, 0, "Bundle 2 Description", "Business Class Upgrades",
                       "bundle2.jpg", "bundles2"),
-               Bundle(False, 0, "Bundle 3 Description", "troph 3",
+               Bundle(False, 0, "Bundle 3 Description", "50% car rental discount",
                       "bundle3.jpg", "bundle1"),
-                 Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+                 Bundle(False, 0, "Bundle 1 Description", "50% hotel stay discount", "", "bundles3"),
                  Bundle(False, 0, "Bundle 2 Description", "troph 2",
                         "bundle2.jpg", "bundles2"),
-                 Bundle(False, 0, "Bundle 3 Description", "troph 3",
-                        "bundle3.jpg", "bundle1"),
+                 Bundle(False, 0, "jskdjskdj", "",
+                        ".//static/images/boarding.png", "bundle1"),
                  ]
 
 #END OF GLOBAL DATA
