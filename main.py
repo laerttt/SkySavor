@@ -33,21 +33,24 @@ traveller = Traveller(
     linkedUserAccount="user123",
     flights=flight_data
 )
-bundle_data = [Bundle(False, 50, "Bundle 1 Description", "Bundle 1", "bundle1.jpg", "bundles3"),
-               Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
-                      "bundle2.jpg", "bundles2"),
-               Bundle(False, 75, "Bundle 3 Description", " 3",
-                      "bundle3.jpg", "bundle1")]
+bundle_data = [Bundle(False, 20, "Enjoy the best quality champagne, mixed with the excellent service of our staff. ",
+                      "Buy Dom Perignon in next flight", "/static/images/dom-perignon.jpg", "bundles3"),
+               Bundle(False, 4, "You have the opportunity to surf the net freely and without any additional fees. ",
+                      "Free internet for the whole flight",
+                      "/static/images/wifi.jpg", "bundles2"),
+               Bundle(False, 6, "You can be the first to check in and board without worrying about long lines",
+                      "Check-in and boarding priority",
+                      "/static/images/boarding.jpg", "bundle1")]
 
-trophy_bundle = [Bundle(False, 50, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
-               Bundle(False, 30, "Bundle 2 Description", "troph 2",
+trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+               Bundle(False, 0, "Bundle 2 Description", "troph 2",
                       "bundle2.jpg", "bundles2"),
-               Bundle(False, 75, "Bundle 3 Description", "troph 3",
+               Bundle(False, 0, "Bundle 3 Description", "troph 3",
                       "bundle3.jpg", "bundle1"),
-                 Bundle(False, 50, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
-                 Bundle(False, 30, "Bundle 2 Description", "troph 2",
+                 Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+                 Bundle(False, 0, "Bundle 2 Description", "troph 2",
                         "bundle2.jpg", "bundles2"),
-                 Bundle(False, 75, "Bundle 3 Description", "troph 3",
+                 Bundle(False, 0, "Bundle 3 Description", "troph 3",
                         "bundle3.jpg", "bundle1"),
                  ]
 
@@ -103,29 +106,30 @@ def findCurrLevel(obj):
 @app.route('/Shop', methods=['GET', 'POST'])
 def shopPage():
     global CurrTokens
-    bundle_data= [ Bundle(False, 20, "Enjoy the best quality champagne, mixed with the excellent service of our staff. ", "Buy Dom Perignon in next flight","/static/images/dom-perignon.jpg","bundles3"),
-          Bundle(False, 4, "You have the opportunity to surf the net freely and without any additional fees. ", "Free internet for the whole flight",
-                     "/static/images/wifi.jpg","bundles2"),
-     Bundle(False, 6, "You can be the first to check in and board without worrying about long lines", "Check-in and boarding priority",
-                     "/static/images/boarding.jpg","bundle1")]
+
     if request.method == "POST":
       for bundle in bundle_data:
           if bundle.name in request.form:
+             if traveller.tokens<bundle.price:
+                 None
+             else:
+              print("a futet")
               bundle.redeemed=True
-              print(bundle.redeemed)
               traveller.tokens=traveller.tokens-bundle.price
               landingPage()
 
     return render_template('shop.html',bundles=bundle_data)
 
 @app.route("/inventory")
-def Inventory():
+def inventory():
     valid_bundle=[]
     TrophPlace=findCurrLevel(traveller)
     print(TrophPlace)
     for bundle in bundle_data:
+        print(40404)
+        print(bundle.redeemed)
         if bundle.redeemed==True:
-
+            print(1001)
             valid_bundle.append(bundle)
     for key in range(1,LEVEL_POINTS_LENGTH):
        if traveller.km>LEVEL_POINTS[key]:
