@@ -35,6 +35,7 @@ body {
     transform: scale(0.58);
     margin-top: 400px;
     margin-left: 235px;
+    overflow-x: hidden;
 }
 
 #harta {
