@@ -10,9 +10,6 @@
     filename = 'css/map.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',
     filename = 'css/flight-history.css') }}">
-    
-    
-    
   </head>
   <body>
     {%include 'navbar.html'%}
@@ -25,6 +22,9 @@
     
     <script src="/static/js/map.js"></script>
     <script src="/static/js/popup.js"></script>
+    <script>
+      console.log("{{json|tojson|safe}}");
+    </script>
 
   </body>
 </html>
