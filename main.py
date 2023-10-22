@@ -69,6 +69,10 @@ def findCurrLevel(obj):
 def shopPage():
     return render_template("shop.html")
 
+@app.route("/inventory")
+def Inventory():
+    return render_template("inventory.html")
+
 FLASK_ENV="development"
 FLASK_APP="main.py"
 def obj_to_json(obj):
