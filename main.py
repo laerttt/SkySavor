@@ -3,6 +3,7 @@ import json
 from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Bundle import Bundle
 from static.Objects.Client import Traveller
+import static.Controllers.kodiqr as kodiqr
 
 app = Flask(__name__)
 
@@ -57,7 +58,7 @@ trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jp
 #END OF GLOBAL DATA
 
 LEVEL_POINTS={
-
+    0:50,
     1:300,
     2:600,
     3:800,
@@ -120,23 +121,26 @@ def shopPage():
 
     return render_template('shop.html',bundles=bundle_data)
 
-@app.route("/inventory")
+@app.route("/inventory", methods=['GET', 'POST'])
 def inventory():
     valid_bundle=[]
     TrophPlace=findCurrLevel(traveller)
     print(TrophPlace)
     for bundle in bundle_data:
-        print(40404)
         print(bundle.redeemed)
         if bundle.redeemed==True:
             print(1001)
             valid_bundle.append(bundle)
-    for key in range(1,LEVEL_POINTS_LENGTH):
+    for key in range(0,LEVEL_POINTS_LENGTH):
        if traveller.km>LEVEL_POINTS[key]:
            trophy_bundle[key].redeemed==True
            valid_bundle.append(trophy_bundle[key])
        else: break
 
+    if request.method == 'POST':
+        kodiqr.generate("https://github.com/laerttt/SkySavor", "qrCode")
+        path = "static/QR/qrCode.png"
+        return render_template("inventory.html", bundles=valid_bundle, path=path)
     return render_template("inventory.html",bundles=valid_bundle)
 
 
