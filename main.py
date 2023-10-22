@@ -127,9 +127,10 @@ def Inventory():
 
             valid_bundle.append(bundle)
     for key in range(1,LEVEL_POINTS_LENGTH):
-       if TrophPlace>LEVEL_POINTS[key]:
+       if traveller.km>LEVEL_POINTS[key]:
            trophy_bundle[key].redeemed==True
            valid_bundle.append(trophy_bundle[key])
+       else: break
 
     return render_template("inventory.html",bundles=valid_bundle)
 
