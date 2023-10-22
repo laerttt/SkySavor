@@ -38,10 +38,10 @@ bundle_data = [Bundle(False, 20, "Enjoy the best quality champagne, mixed with t
                       "Buy Dom Perignon in next flight", "/static/images/dom-perignon.jpg", "bundles3"),
                Bundle(False, 4, "You have the opportunity to surf the net freely and without any additional fees. ",
                       "Free internet for the whole flight",
-                      "/static/images/wifi.jpg", "bundles2"),
+                      "/static/images/wifi.png", "bundles2"),
                Bundle(False, 6, "You can be the first to check in and board without worrying about long lines",
                       "Check-in and boarding priority",
-                      "/static/images/boarding.jpg", "bundle1")]
+                      "/static/images/boarding.png", "bundle1")]
 
 trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
                Bundle(False, 0, "Bundle 2 Description", "troph 2",
@@ -127,7 +127,7 @@ def inventory():
     TrophPlace=findCurrLevel(traveller)
     print(TrophPlace)
     for bundle in bundle_data:
-        print(bundle.redeemed)
+        print(bundle._picture)
         if bundle.redeemed==True:
             print(1001)
             valid_bundle.append(bundle)
