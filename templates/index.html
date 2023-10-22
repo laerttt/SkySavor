@@ -4,7 +4,6 @@
 {% block content%}
 
 {% include 'map.html'%}
-{{json}}
 <div class="all_container">
     <div class="price-container">
         <h2>Recent Flights History</h2>
@@ -28,5 +27,8 @@
     {%endfor%}
     </div>
 </div>
-
+<script src="/static/js/map.js">
+      let countries =  {{json}};
+      alert(countries);
+</script>
 {% endblock %}
