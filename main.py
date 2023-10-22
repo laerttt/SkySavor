@@ -1,9 +1,40 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect,url_for
 import json
 from static.Objects.BookedSegment import Flight, Country
+from static.Objects.Bundle import Bundle
 from static.Objects.Client import Traveller
-import static.Controllers.kodiqr as kodiqr
+
 app = Flask(__name__)
+
+
+#NECCESARY GLOBAL DATA TO SIMULATE LOG IN STATUS
+France = Country("France", "Europe", "CGA")
+Japan = Country("Japan", "Asia", "MIA")
+USA = Country("USA", "North America", "JFK")
+
+flight_data = [
+    Flight(France, Japan, "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
+           500.0, 12.0, 800),
+    Flight(USA, France, "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
+           "PREMIUM_ECONOMY", 400.0, 11.0, 232),
+    Flight(Japan, USA, "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
+           350.0, 10.5, 123)
+]
+
+
+traveller = Traveller(
+    firstName="John",
+    lastName="Doe",
+    middleName="M.",
+    salutation="Mr.",
+    gender="Male",
+    passengerType="Adult",
+    frequentFlyerNumber="FF123",
+    linkedUserAccount="user123",
+    flights=flight_data
+)
+#END OF GLOBAL DATA
+
 LEVEL_POINTS={
 
     1:300,
@@ -14,32 +45,14 @@ LEVEL_POINTS={
     6: 3000,
     }
 LEVEL_POINTS_LENGTH=8
+CurrTokens=0
 @app.route("/")
 def landingPage():
-    France = Country("France", "Europe", "CGA")
-    Japan = Country("Japan", "Asia", "MIA")
-    USA = Country("USA", "North America", "JFK")
 
-    flight_data = [
-        Flight(France, Japan, "AA124", "2023-10-26", "AA", "2023-10-26 08:00", "2023-10-26 10:30", "BUSINESS",
-                      500.0, 12.0, 800),
-        Flight(USA, France, "UA456", "2023-10-27", "UA", "2023-10-27 09:00", "2023-10-27 11:30",
-                      "PREMIUM_ECONOMY", 400.0, 11.0, 232),
-        Flight(Japan, USA, "UA457", "2023-10-28", "UA", "2023-10-28 09:00", "2023-10-28 11:30", "ECONOMY",
-                      350.0, 10.5, 123)
-    ]
 
-    traveller = Traveller(
-        firstName="John",
-        lastName="Doe",
-        middleName="M.",
-        salutation="Mr.",
-        gender="Male",
-        passengerType="Adult",
-        frequentFlyerNumber="FF123",
-        linkedUserAccount="user123",
-        flights= flight_data
-    )
+
+
+
     # variables for roadmap trophies
     currLevel = findCurrLevel(traveller)
     nextLevelPoints = LEVEL_POINTS[currLevel + 1] - traveller.km
@@ -51,7 +64,7 @@ def landingPage():
 
     print(map_data)
     #json for map
-    json=obj_to_json(traveller)
+    json=obj_to_json(map_data)
     print(json)
 
     print(traveller.tokens)
@@ -60,7 +73,7 @@ def landingPage():
     # nextLevelPoints dictionary containing diff level points
     # levelPoints specific level points
 
-    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints, tokens=20, firstname=traveller.firstName, lastname=traveller.lastName, km=traveller.km)
+    return render_template("index.html",flights=traveller.flights,json=json,currLevel=currLevel, nextLevelPoints=nextLevelPoints, levelPoints=LevelPoints, tokens=traveller.tokens, firstname=traveller.firstName, lastname=traveller.lastName, km=traveller.km)
 def findCurrLevel(obj):
     for i in range(1,LEVEL_POINTS_LENGTH):
         if obj.km > LEVEL_POINTS[i]:
@@ -70,21 +83,28 @@ def findCurrLevel(obj):
         elif obj.km < LEVEL_POINTS[i]:
             return i
 
-@app.route("/Shop",methods=["GET", "POST"])
+@app.route('/Shop', methods=['GET', 'POST'])
 def shopPage():
+    global CurrTokens
+    bundle_data= [ Bundle(False, 50, "Bundle 1 Description", "Bundle 1","bundle1.jpg","bundles3"),
+          Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
+                     "bundle2.jpg","bundles2"),
+     Bundle(False, 75, "Bundle 3 Description", "Bundle 3",
+                     "bundle3.jpg","bundle1")]
     if request.method == "POST":
-        kodiqr.generate("https://github.com/laerttt/SkySavor", "test")
-    return render_template("shop.html")
+      for bundle in bundle_data:
+          if bundle.name in request.form:
+              bundle.redeemed=True
+              print(bundle.redeemed)
+              traveller.tokens=traveller.tokens-bundle.price
+              landingPage()
 
-@app.route("/inventory")
-def Inventory():
-    return render_template("inventory.html")
+    return render_template('shop.html',bundles=bundle_data)
 
 FLASK_ENV="development"
 FLASK_APP="main.py"
 def obj_to_json(obj):
-    list=obj.visitedCountries
-    return json.dumps(list)
+    return json.dumps(obj)
 
 
 

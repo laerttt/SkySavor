@@ -7,73 +7,23 @@
         <p align="center"><a href=/ ><button class=shop-button>Dashboard</button></a></p>
         <h2 style="font-size: 50px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; color: #1b1460;margin: -20px 0px -20px 0px;">Bundle Shop</h2>
         <div class="credit-row">
+                       {% for bundle in bundles%}
+
             <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
+
+                <p>{{bundle.header}}</p>
                 <img src="/static/images/dom-perignon.jpg">
                 
-                <h3>5 Tokens</h3>
+                <h3>{{bundle.price}}</h3>
                 <ul style="padding-left: 0px;">
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
+                    <li>{{bundle.description}}</li>
                 </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>            </div>
-            <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
-                <img src="/static/images/dom-perignon.jpg">
-                
-                <h3>5 Tokens</h3>
-                <ul>
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
-                </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>            </div>
-            <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
-                <img src="/static/images/dom-perignon.jpg">
-                
-                <h3>5 Tokens</h3>
-                <ul>
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
-                </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>            </div>
-            <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
-                <img src="/static/images/dom-perignon.jpg">
-                
-                <h3>5 Tokens</h3>
-                <ul>
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
-                </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>            </div>
-            <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
-                <img src="/static/images/dom-perignon.jpg">
-                
-                <h3>5 Tokens</h3>
-                <ul>
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
-                </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>            </div>
-            <div class="credit-col">
-                <p>Buy a Dom Prignon in next flight</p>
-                <img src="/static/images/dom-perignon.jpg">
-                
-                <h3>5 Tokens</h3>
-                <ul>
-                    <li>Enjoy the elegance and sophistication of a bottle of Dom Pérignon's finest vintage champagne.</li>
-                </ul>
-                <form method="post">
-                    <button type="submit">Purchase</button>
-                </form>
+               <form method="post">
+               <button type="submit" type="button" name="{{bundle.name}}">LAli</button>
+               </form>
+
             </div>
+     {%endfor%}
         </div>
     </div>
 </div>
