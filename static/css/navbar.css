@@ -28,6 +28,7 @@
   border-width: 0px;
   border-color: white;
   transition: background-color 100ms;
+  margin-left: 50px;
 }
 .navbar-button:hover {
     background-color: #0550d0;
