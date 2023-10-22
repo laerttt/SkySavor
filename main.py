@@ -62,6 +62,7 @@ LEVEL_POINTS={
     5: 2000,
     6: 3000,
     }
+
 LEVEL_POINTS_LENGTH=8
 CurrTokens=0
 @app.route("/")
