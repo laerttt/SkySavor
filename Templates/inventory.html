@@ -2,7 +2,7 @@
 
 <div class="all_container">
     <div class="price-container">
-    <p align="center"><a href=/ ><button class=shop-button>Dashboard</button></a></p>
+    <p align="left"><a href=/ ><button class=shop-button>Dashboard</button></a></p>
         <h2>Inventory</h2>
                                {% for bundle in bundles%}
         <div class="credit-col">
@@ -11,9 +11,14 @@
                     <img src="/static/images/dom-perignon.jpg" alt="">
                     <p style="margin-left: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: rgb(0, 0, 103); font-size: 20px; ;">{{bundle.header}}</p>
                 </div>
-                <button>Redeem QR Code</button>
+                <form method="post">
+                    <button type="submit">Redeem QR Code</button>
+                </form>
             </div>
         </div>
                       {%endfor%}
+    </div>
+    <div class="price-container-right">
+        <img src="{{path}}" style="position: fixed; left:62%; top:30%">
     </div>
 </div>
