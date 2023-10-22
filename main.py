@@ -103,11 +103,11 @@ def findCurrLevel(obj):
 @app.route('/Shop', methods=['GET', 'POST'])
 def shopPage():
     global CurrTokens
-    bundle_data= [ Bundle(False, 50, "Bundle 1 Description", "Bundle 1","bundle1.jpg","bundles3"),
-          Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
-                     "bundle2.jpg","bundles2"),
-     Bundle(False, 75, "Bundle 3 Description", "Bundle 3",
-                     "bundle3.jpg","bundle1")]
+    bundle_data= [ Bundle(False, 20, "Enjoy the best quality champagne, mixed with the excellent service of our staff. ", "Buy Dom Perignon in next flight","/static/images/dom-perignon.jpg","bundles3"),
+          Bundle(False, 4, "You have the opportunity to surf the net freely and without any additional fees. ", "Free internet for the whole flight",
+                     "/static/images/wifi.jpg","bundles2"),
+     Bundle(False, 6, "You can be the first to check in and board without worrying about long lines", "Check-in and boarding priority",
+                     "/static/images/boarding.jpg","bundle1")]
     if request.method == "POST":
       for bundle in bundle_data:
           if bundle.name in request.form:
@@ -134,6 +134,7 @@ def Inventory():
        else: break
 
     return render_template("inventory.html",bundles=valid_bundle)
+
 
 
 

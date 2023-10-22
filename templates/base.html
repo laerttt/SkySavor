@@ -23,8 +23,10 @@
     <script src="/static/js/map.js"></script>
     <script src="/static/js/popup.js"></script>
     <script>
-      console.log("{{json|tojson|safe}}");
+      let countries = {{json|tojson|safe}};
+      console.log(countries)
     </script>
+    <script src="/static/map.js"></script>
 
   </body>
 </html>

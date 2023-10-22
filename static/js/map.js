@@ -125,12 +125,12 @@ for (let i = 0; i < paths.length; i++) {
 
 /*Visited places color*/ 
 // Define your countries object
-let countries = {
-  "USA": "NorthAmerica",
-  "France": "Europe",
-  "China": "Asia",
-  "Brazil": "SouthAmerica"
-};
+// let countries = {
+//   "USA": "NorthAmerica",
+//   "France": "Europe",
+//   "China": "Asia",
+//   "Brazil": "SouthAmerica"
+// };
 
 // Function to set initial fill colors for countries on the SVG map
 function setInitialFillColors() {
@@ -156,13 +156,13 @@ function popupkm(event) {
   const popup = document.getElementById(`${continent}-popup`);
   const popupContent = popup.querySelector(`.${continent}-fraction`);
 
-  let countries = {
-      "USA": "northAmerica", // Corrected continent names
-      "France": "europe",
-      "China": "asia",
-      "Brazil": "southAmerica",
-      "Albania": "europe"
-  };
+  // let countries = {
+  //     "USA": "northAmerica", // Corrected continent names
+  //     "France": "europe",
+  //     "China": "asia",
+  //     "Brazil": "southAmerica",
+  //     "Albania": "europe"
+  // };
 
   let continentCounts = {
       "europe": 0,
@@ -196,10 +196,6 @@ function popupkm(event) {
     }
   }
 
-  let continentCount = continentCounts[continent]; // Get the count for the specific continent
-  const maxCapacity = continentMaxCapacity[continent]; // Corrected continent names
-
-  popupContent.textContent = `${continentCount}/${maxCapacity}`;
 }
 
 /*Main Popup */
