@@ -1,11 +1,12 @@
 
 from flask import Flask, render_template, request,redirect,url_for
 
+from flask import Flask, render_template, request,redirect,url_for
 import json
 from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Bundle import Bundle
 from static.Objects.Client import Traveller
-import static.Controllers.kodiqr as kodiqr
+
 app = Flask(__name__)
 
 
@@ -115,7 +116,6 @@ def Inventory():
         if bundle.redeemed==True:
             valid_bundle.append(bundle)
     return render_template("inventory.html",bundles=valid_bundle)
-
 FLASK_ENV="development"
 FLASK_APP="main.py"
 def obj_to_json(obj):
