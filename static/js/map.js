@@ -196,10 +196,6 @@ function popupkm(event) {
     }
   }
 
-  let continentCount = continentCounts[continent]; // Get the count for the specific continent
-  const maxCapacity = continentMaxCapacity[continent]; // Corrected continent names
-
-  popupContent.textContent = `${continentCount}/${maxCapacity}`;
 }
 
 /*Main Popup */
