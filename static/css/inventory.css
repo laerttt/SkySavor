@@ -1,0 +1,92 @@
+
+.price-container {
+    background-color: #05164D;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px grey;
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 50%; 
+    height: 100vh; 
+    background-image: linear-gradient(to bottom right, #05164D, rgb(81, 61, 169));
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+     
+}
+  
+  .price-container h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+  }
+  
+  
+  .credit-col {
+    padding: 10px;
+    background-color: #fbfbfb;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    justify-content: center; 
+    margin: 10px 0;
+    width: 80%; 
+    max-width: 400px;
+    transition: border-radius 150ms, width 150ms;
+  }
+  
+  .credit-col:hover{
+    border-radius: 10px;
+    width: 85%;
+  }
+  
+  .credit-col img{
+    border-radius: 100px; 
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+}
+  
+  
+  h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  
+  .currently {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  
+  li {
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .credit-col button {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    color: rgb(81, 61, 169);
+    font-size: 15px;
+    border: 1px solid #05164D;
+    border-radius: 6px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 1s;
+}
+
+.credit-col button:hover {
+    background: #05164D;
+}

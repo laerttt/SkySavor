@@ -1,9 +1,11 @@
+
 from flask import Flask, render_template, request,redirect,url_for
+
 import json
 from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Bundle import Bundle
 from static.Objects.Client import Traveller
-
+import static.Controllers.kodiqr as kodiqr
 app = Flask(__name__)
 
 
@@ -33,6 +35,11 @@ traveller = Traveller(
     linkedUserAccount="user123",
     flights=flight_data
 )
+bundle_data = [Bundle(False, 50, "Bundle 1 Description", "Bundle 1", "bundle1.jpg", "bundles3"),
+               Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
+                      "bundle2.jpg", "bundles2"),
+               Bundle(False, 75, "Bundle 3 Description", "Bundle 3",
+                      "bundle3.jpg", "bundle1")]
 #END OF GLOBAL DATA
 
 LEVEL_POINTS={
@@ -85,21 +92,29 @@ def findCurrLevel(obj):
 
 @app.route('/Shop', methods=['GET', 'POST'])
 def shopPage():
-    global CurrTokens
-    bundle_data= [ Bundle(False, 50, "Bundle 1 Description", "Bundle 1","bundle1.jpg","bundles3"),
-          Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
-                     "bundle2.jpg","bundles2"),
-     Bundle(False, 75, "Bundle 3 Description", "Bundle 3",
-                     "bundle3.jpg","bundle1")]
+
+
     if request.method == "POST":
       for bundle in bundle_data:
           if bundle.name in request.form:
-              bundle.redeemed=True
-              print(bundle.redeemed)
-              traveller.tokens=traveller.tokens-bundle.price
+              if traveller.tokens<bundle.price:
+                  None
+              else:
+                  bundle.redeemed=True
+                  print(bundle.redeemed)
+                  traveller.tokens=traveller.tokens-bundle.price
+
               landingPage()
 
     return render_template('shop.html',bundles=bundle_data)
+
+@app.route("/inventory")
+def Inventory():
+    valid_bundle=[]
+    for bundle in bundle_data:
+        if bundle.redeemed==True:
+            valid_bundle.append(bundle)
+    return render_template("inventory.html",bundles=valid_bundle)
 
 FLASK_ENV="development"
 FLASK_APP="main.py"
