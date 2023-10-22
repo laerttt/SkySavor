@@ -3,32 +3,17 @@
 <div class="all_container">
     <div class="price-container">
         <h2>Inventory</h2>
+                               {% for bundle in bundles%}
+
         <div class="credit-col">
             <div >
                 <div  style="display: flex; flex-direction: row;">
                     <img src="/static/images/dom-perignon.jpg" alt="">
-                    <p style="margin-left: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: rgb(0, 0, 103); font-size: 20px; ;">Buy Dom Perignon in next flight</p>
+                    <p style="margin-left: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: rgb(0, 0, 103); font-size: 20px; ;">{{bundle.header}}</p>
                 </div>
                 <button>Redeem QR Code</button>
             </div>
         </div>
-        <div class="credit-col">
-            <div >
-                <div  style="display: flex; flex-direction: row;">
-                    <img src="/static/images/dom-perignon.jpg" alt="">
-                    <p style="margin-left: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: rgb(0, 0, 103); font-size: 20px; ;">Buy Dom Perignon in next flight</p>
-                </div>
-                <button>Redeem QR Code</button>
-            </div>
-        </div>
-        <div class="credit-col">
-            <div >
-                <div  style="display: flex; flex-direction: row;">
-                    <img src="/static/images/dom-perignon.jpg" alt="">
-                    <p style="margin-left: 20px; margin-top: 30px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; color: rgb(0, 0, 103); font-size: 20px; ;">Buy Dom Perignon in next flight</p>
-                </div>
-                <button>Redeem QR Code</button>
-            </div>
-        </div>
+                      {%endfor%}
     </div>
 </div>
