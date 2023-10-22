@@ -3,7 +3,6 @@ import json
 from static.Objects.BookedSegment import Flight, Country
 from static.Objects.Bundle import Bundle
 from static.Objects.Client import Traveller
-import static.Controllers.kodiqr as kodiqr
 
 app = Flask(__name__)
 
@@ -42,23 +41,22 @@ bundle_data = [Bundle(False, 20, "Enjoy the best quality champagne, mixed with t
                Bundle(False, 6, "You can be the first to check in and board without worrying about long lines",
                       "Check-in and boarding priority",
                       "/static/images/boarding.png", "bundle1")]
-
-trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+trophy_bundle = [Bundle(False, 0, "Bundle 1 Description", "troph 1", "/static/images/boarding.png", "bundles3"),
                Bundle(False, 0, "Bundle 2 Description", "Business Class Upgrades",
-                      "bundle2.jpg", "bundles2"),
+                      "/static/images/boarding.png", "bundles2"),
                Bundle(False, 0, "Bundle 3 Description", "50% car rental discount",
-                      "bundle3.jpg", "bundle1"),
-                 Bundle(False, 0, "Bundle 1 Description", "50% hotel stay discount", "", "bundles3"),
+                      "/static/images/car.png", "bundle1"),
+                 Bundle(False, 0, "Bundle 1 Description", "50% hotel stay discount", "/static/images/hotel.png", "bundles3"),
                  Bundle(False, 0, "Bundle 2 Description", "troph 2",
-                        "bundle2.jpg", "bundles2"),
+                        "/static/images/boarding.png", "bundles2"),
                  Bundle(False, 0, "jskdjskdj", "",
-                        ".//static/images/boarding.png", "bundle1"),
+                        "/static/images/boarding.png", "bundle1"),
                  ]
 
 #END OF GLOBAL DATA
 
 LEVEL_POINTS={
-    0:50,
+
     1:300,
     2:600,
     3:800,
@@ -84,7 +82,9 @@ def landingPage():
     for flight in flight_data:
         map_data[flight.origin.Name] = flight.origin.continent
         map_data[flight.destination.Name] = flight.destination.continent
-
+    bundle1=Bundle(False, 20, "Enjoy the best quality champagne, mixed with the excellent service of our staff. ",
+                      "Buy Dom Perignon in next flight", "/static/images/dom-perignon.jpg", "bundles3")
+    print(bundle1.picture+"a u bo ?")
     print(map_data)
     print(traveller.tokens)
 
@@ -121,26 +121,24 @@ def shopPage():
 
     return render_template('shop.html',bundles=bundle_data)
 
-@app.route("/inventory", methods=['GET', 'POST'])
+@app.route("/inventory")
 def inventory():
     valid_bundle=[]
     TrophPlace=findCurrLevel(traveller)
     print(TrophPlace)
     for bundle in bundle_data:
-        print(bundle._picture)
+        print(40404)
+        print(bundle.redeemed)
         if bundle.redeemed==True:
             print(1001)
             valid_bundle.append(bundle)
-    for key in range(0,LEVEL_POINTS_LENGTH):
+    for key in range(1,LEVEL_POINTS_LENGTH):
        if traveller.km>LEVEL_POINTS[key]:
            trophy_bundle[key].redeemed==True
            valid_bundle.append(trophy_bundle[key])
+           print(trophy_bundle[key].picture)
        else: break
 
-    if request.method == 'POST':
-        kodiqr.generate("https://github.com/laerttt/SkySavor", "qrCode")
-        path = "static/QR/qrCode.png"
-        return render_template("inventory.html", bundles=valid_bundle, path=path)
     return render_template("inventory.html",bundles=valid_bundle)
 
 
