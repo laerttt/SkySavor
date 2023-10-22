@@ -39,8 +39,20 @@ traveller = Traveller(
 bundle_data = [Bundle(False, 50, "Bundle 1 Description", "Bundle 1", "bundle1.jpg", "bundles3"),
                Bundle(False, 30, "Bundle 2 Description", "Bundle 2",
                       "bundle2.jpg", "bundles2"),
-               Bundle(False, 75, "Bundle 3 Description", "Bundle 3",
+               Bundle(False, 75, "Bundle 3 Description", " 3",
                       "bundle3.jpg", "bundle1")]
+
+trophy_bundle = [Bundle(False, 50, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+               Bundle(False, 30, "Bundle 2 Description", "troph 2",
+                      "bundle2.jpg", "bundles2"),
+               Bundle(False, 75, "Bundle 3 Description", "troph 3",
+                      "bundle3.jpg", "bundle1"),
+                 Bundle(False, 50, "Bundle 1 Description", "troph 1", "bundle1.jpg", "bundles3"),
+                 Bundle(False, 30, "Bundle 2 Description", "troph 2",
+                        "bundle2.jpg", "bundles2"),
+                 Bundle(False, 75, "Bundle 3 Description", "troph 3",
+                        "bundle3.jpg", "bundle1"),
+                 ]
 #END OF GLOBAL DATA
 
 LEVEL_POINTS={
@@ -112,10 +124,21 @@ def shopPage():
 @app.route("/inventory")
 def Inventory():
     valid_bundle=[]
+    TrophPlace=findCurrLevel(traveller)
+    print(TrophPlace)
     for bundle in bundle_data:
         if bundle.redeemed==True:
+
             valid_bundle.append(bundle)
+    for key in range(1,LEVEL_POINTS_LENGTH):
+       if TrophPlace>LEVEL_POINTS[key]:
+           trophy_bundle[key].redeemed==True
+           valid_bundle.append(trophy_bundle[key])
+
     return render_template("inventory.html",bundles=valid_bundle)
+
+
+
 FLASK_ENV="development"
 FLASK_APP="main.py"
 def obj_to_json(obj):
